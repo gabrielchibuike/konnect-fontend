@@ -2,16 +2,13 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import CustomInput from "../authComponent/authReuseable/CustomInput";
 import MainContainer from "../Reuseables/MainContainer";
 import CustomButton from "../Reuseables/Button";
-import { btn } from "../utils/btn_info";
 import ToastMsg from "../Reuseables/ToastMsg";
 import { ChangeEvent, useState } from "react";
 import { domain } from "../api/client";
-import { JwtPayload, jwtDecode } from "jwt-decode";
 import { FaHandsHelping } from "react-icons/fa";
 
 function LoginAuth() {
   const nav = useNavigate();
-  const location = useLocation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [Toast, setToast] = useState(false);

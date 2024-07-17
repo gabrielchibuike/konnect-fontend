@@ -26,7 +26,7 @@ function Profile({
   const animate = useRef<HTMLDivElement[]>([]);
   const [SavedJobIsOpen, setSavedJobIsOpen] = useState(false);
   const [IsApplied, setIsApplied] = useState(false);
-  const [manageJob, setManageJob] = useState(false);
+  const [, setManageJob] = useState(false);
   const [SettingIsOpen, setSettingJobIsOpen] = useState(false);
   const [helpCenter, setHelpCenter] = useState(false);
   const direct = useNavigate();

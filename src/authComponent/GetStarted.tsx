@@ -1,4 +1,4 @@
-import { ChangeEvent, useContext, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import AuthStep1 from "./authReuseable/AuthStep1";
 import AuthStep2 from "./authReuseable/AuthStep2";
 import AuthStep3 from "./authReuseable/AuthStep3";
@@ -11,7 +11,6 @@ import { domain } from "../api/client";
 import { JwtPayload, jwtDecode } from "jwt-decode";
 import AuthStep5 from "./authReuseable/AuthStep5";
 import { location, userName } from "../validation/validateUser";
-import { ContextApi } from "../App";
 import ToastMsg from "../Reuseables/ToastMsg";
 
 function GetStarted() {

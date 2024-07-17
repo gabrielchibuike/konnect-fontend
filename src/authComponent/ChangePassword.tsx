@@ -1,10 +1,8 @@
-import { FaHandsHelping } from "react-icons/fa";
-import MainContainer from "../Reuseables/MainContainer";
+
 import ToastMsg from "../Reuseables/ToastMsg";
 import CustomInput from "./authReuseable/CustomInput";
 import CustomButton from "../Reuseables/Button";
 import { ChangeEvent, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import { domain } from "../api/client";
 import { jwtDecode } from "jwt-decode";
 import { updateSchema } from "../validation/validateUser";

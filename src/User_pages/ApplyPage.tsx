@@ -3,7 +3,6 @@ import { ChangeEvent, useEffect, useRef, useState } from "react";
 import Footer from "../Components/Footer";
 import Nav from "../Components/Nav";
 import { useLocation, useNavigate } from "react-router-dom";
-import { BsFillBookmarkFill } from "react-icons/bs";
 import { CiLocationArrow1 } from "react-icons/ci";
 import { MdAddLocation } from "react-icons/md";
 import Button from "../Reuseables/Button";

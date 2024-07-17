@@ -1,4 +1,3 @@
-import { CgArrowLeft } from "react-icons/cg";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { domain } from "../api/client";

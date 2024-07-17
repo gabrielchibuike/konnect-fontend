@@ -7,7 +7,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { jobs_info } from "../utils/interface";
 import JobCardSkeleton from "../SkeletonLoaders/JobCardSkeleton";
 import DOMPurify from "dompurify";
-import { CgSpinnerTwoAlt } from "react-icons/cg";
 
 function Card({
   handleClick,

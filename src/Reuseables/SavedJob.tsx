@@ -47,7 +47,7 @@ function SavedJob({
     }
   }
 
-  async function RemoveSavedJob(id: string, i: number) {
+  async function RemoveSavedJob( i: number) {
     const request = await fetch(`${domain}/api/remove-jobs/${decoded.id}`, {
       method: "DELETE",
       headers: {
@@ -113,7 +113,7 @@ function SavedJob({
                       additionalclass=""
                       // handleClick={apply}
                     />
-                    <div onClick={() => RemoveSavedJob(jobs._id, index)}>
+                    <div onClick={() => RemoveSavedJob( index)}>
                       <BsTrash3 />
                     </div>
                   </div>

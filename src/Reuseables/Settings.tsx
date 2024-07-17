@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import { AiFillEdit } from "react-icons/ai";
-import { Link } from "react-router-dom";
 import ChangePassword from "../authComponent/ChangePassword";
 import EditProfile from "../authComponent/EditProfile";
 

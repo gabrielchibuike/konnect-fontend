@@ -1,11 +1,11 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import CustomInput from "../authComponent/authReuseable/CustomInput";
 import CustomButton from "../Reuseables/Button";
 import MainContainer from "../Reuseables/MainContainer";
 import { updateSchema } from "../validation/validateUser";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { domain } from "../api/client";
-import { JwtPayload, jwtDecode } from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import ToastMsg from "../Reuseables/ToastMsg";
 import { FaHandsHelping } from "react-icons/fa";
 

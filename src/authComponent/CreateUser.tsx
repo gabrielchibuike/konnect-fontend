@@ -3,11 +3,9 @@ import MainContainer from "../Reuseables/MainContainer";
 import { SetStateAction, useState } from "react";
 import CustomButton from "../Reuseables/Button";
 import { createUserSchema } from "../validation/validateUser";
-import { btn } from "../utils/btn_info";
 import { Link, useNavigate } from "react-router-dom";
 import ToastMsg from "../Reuseables/ToastMsg";
 import { domain } from "../api/client";
-import { jwtDecode } from "jwt-decode";
 import { FaHandsHelping } from "react-icons/fa";
 
 function CreateUser() {

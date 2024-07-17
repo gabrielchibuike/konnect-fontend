@@ -1,4 +1,3 @@
-import { BiBriefcase } from "react-icons/bi";
 import { MdArrowForwardIos } from "react-icons/md";
 import { MdCreditScore } from "react-icons/md";
 import { CgClose } from "react-icons/cg";
@@ -11,7 +10,6 @@ import { useEffect, useRef, useState } from "react";
 import AppliedJob from "../Reuseables/AppliedJob";
 import { BiLeftArrowAlt } from "react-icons/bi";
 import Settings from "../Reuseables/Settings";
-import ManageJob from "../Reuseables/ManageJob";
 import HelpCenter from "../Reuseables/HelpCenter";
 import { JwtPayload, jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
@@ -125,7 +123,7 @@ function Profile({
   }
 
   useEffect(() => {
-    list.forEach((e, index) => {
+    list.forEach((_, index) => {
       if (index == 0) {
         IsActive.current.forEach((e) => {
           e.classList.remove("border-l-4", "border-blue-700");

@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import JobListing from "./Components/JobListing"
 import Home from "./User_pages/Home";
-import BuildResume from "./User_pages/BuildResume";
 import Community from "./User_pages/Community";
 import Jobs from "./User_pages/Jobs";
 import CreateUser from "./authComponent/CreateUser";

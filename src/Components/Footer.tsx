@@ -4,7 +4,7 @@ import { FaSnapchatGhost } from "react-icons/fa";
 import { AiOutlineInstagram } from "react-icons/ai";
 import { AiOutlineTwitter } from "react-icons/ai";
 import { FaFacebookF } from "react-icons/fa";
-import { useEffect } from "react";
+
 
 function Footer() {
   return (

@@ -14,6 +14,7 @@ import JobNotFound from "../Reuseables/JobNotFound";
 import { saveJob } from "../utils/saveJobFunc";
 import FilterComponent from "./FilterComponent";
 import DOMPurify from "dompurify";
+import ToastMsg from "../Reuseables/ToastMsg";
 
 function SearchResult() {
   const scrollhieght = useRef<HTMLDivElement>(null);
@@ -22,6 +23,12 @@ function SearchResult() {
   const hideJobList = useRef<HTMLDivElement>(null);
   const [searchPayLoadInfo, setSearchPayLoadInfo] = useState<jobs_info[]>([]);
 
+  const [Toast, setToast] = useState(false);
+
+  const [errType, setErrType] = useState({
+    type: "",
+    msg: "",
+  });
 
   const searchpayload = useSelector(
     (state: any) => state.searchResult.value.searchPayload
@@ -74,6 +81,16 @@ function SearchResult() {
   return (
     <>
       <section>
+        {Toast && (
+          <div className="w-full fixed z-20 top-5 max-w-[250px]  left-1/2 -translate-x-1/2">
+            <ToastMsg
+              setToast={setToast}
+              Toast={Toast}
+              toastType={errType.type}
+              toastMsg={errType.msg}
+            />
+          </div>
+        )}
         <div className="block" ref={hideJobList}>
           <Nav activeRoute="/jobs" />
           <SideNav />
@@ -137,7 +154,7 @@ function SearchResult() {
                             />
                             <div
                               className="p-[6px] w-auto h-auto bg-zinc-100 rounded-md cursor-pointer"
-                              onClick={() => saveJob(ele)}
+                              onClick={() => saveJob(ele, setToast, setErrType)}
                             >
                               <BsFillBookmarkFill className="text-xl text-zinc-400" />
                             </div>
@@ -169,6 +186,5 @@ function SearchResult() {
     </>
   );
 }
-
 
 export default SearchResult;

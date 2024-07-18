@@ -76,7 +76,7 @@ function App({}) {
                 <Route path="/getStarted" element={<GetStarted />} />
                 <Route path="/apply-job" element={<ApplyPage />} />
                 {/* Hire Routes */}
-                <Route path="/employer-hire" element={<PostJob />} />
+                <Route path="/employer" element={<PostJob />} />
                 <Route path="/review-application" element={<EmailTemplate />} />
               </Routes>
             </BrowserRouter>

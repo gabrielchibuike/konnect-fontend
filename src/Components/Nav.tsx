@@ -97,7 +97,7 @@ function Nav({ activeRoute }: { activeRoute?: string }) {
             </div>
           )}
 
-          <Link to={"/employer-hire"}>
+          <Link to={"/employer"}>
             <div className="h-[60px] flex items-center  hover:border-blue-700 hover:border-b  max-lg:hidden">
               Post Job/Employers
             </div>

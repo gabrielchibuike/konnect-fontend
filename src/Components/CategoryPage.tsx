@@ -79,13 +79,15 @@ function CategoryPage() {
         dispatch(isLoading({ isLoading: false }));
 
         dispatch(categoryPayload({ categoryPayload: [...result] }));
-
       }, 2000);
-
     } else if (request.status == 400) {
       dispatch(isLoading({ isLoading: false }));
       const result = await request.text();
       console.log(result);
+    } else if (request.status == 403) {
+      dispatch(isLoading({ isLoading: false }));
+      const result = await request.text();
+      direct("/login")
     }
   }
 

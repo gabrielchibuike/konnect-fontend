@@ -86,7 +86,7 @@ function CategoryPage() {
       console.log(result);
     } else if (request.status == 403) {
       dispatch(isLoading({ isLoading: false }));
-      const result = await request.text();
+      // const result = await request.text();
       direct("/login")
     }
   }

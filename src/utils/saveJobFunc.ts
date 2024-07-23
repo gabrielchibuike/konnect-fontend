@@ -20,13 +20,13 @@ export async function saveJob(
   // });
 
   interface newJwtPayLoad extends JwtPayload {
-    id: string;
+    _id: string;
     email: string;
   }
   const token = localStorage.getItem("AccessToken");
   const decoded: newJwtPayLoad = jwtDecode(token!);
 
-  const request = await fetch(`${domain}/api/save-jobs/${decoded.id}`, {
+  const request = await fetch(`${domain}/api/save-jobs/${decoded._id}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -39,7 +39,7 @@ export async function saveJob(
   if (request.ok) {
      await request.text();
     setToast(true);
-    setErrType({ type: "success", msg: "Added successfully" });
+    setErrType({ type: "success", msg: "Job saved successfully" });
   } else {
     const result = await request.text();
     setToast(true);

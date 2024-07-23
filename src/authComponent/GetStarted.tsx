@@ -66,7 +66,7 @@ function GetStarted() {
           return {
             ...previnfo,
             id: decoded.id,
-            email : decoded.email,
+            email: decoded.email,
             firstName: Inputs.firstName,
             lastName: Inputs.lastName,
           };
@@ -105,13 +105,16 @@ function GetStarted() {
   async function routeNext() {
     const option = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        // "x-auth-token": localStorage.getItem("AccessToken") as string,
+      },
       body: JSON.stringify(Records),
     };
     const request = await fetch(`${domain}/api/access/more_user_info`, option);
     const result = await request.text();
     if (request.ok) {
-      localStorage.setItem("AccessToken", JSON.stringify(result));
+      localStorage.setItem("AccessToken", result);
       nav("/jobs");
     } else {
       console.log(result);

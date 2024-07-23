@@ -31,7 +31,7 @@ function Card({
         "x-auth-token": localStorage.getItem("AccessToken") as string,
       },
     });
-
+    // const result = await request.text();
     if (request.ok) {
       setTimeout(async () => {
         setIsLoading(false);
@@ -46,11 +46,12 @@ function Card({
           console.log("false");
         }
       }, 2000);
+    } else if (request.status == 401 || request.status == 403) {
+      nav("/login");
     } else {
       const result = await request.text();
-      if (result == "Forbidden") {
-        nav("/login");
-      }
+      console.log(result);
+      
     }
   }
 
@@ -59,6 +60,7 @@ function Card({
   }, [page]);
 
   const handleScroll = useCallback(() => {
+      console.log(document.documentElement.scrollTop);
     if (
       window.innerHeight + document.documentElement.scrollTop ===
       document.documentElement.offsetHeight
@@ -68,6 +70,9 @@ function Card({
       }
     }
   }, [hasMore]);
+ 
+
+  
 
   // function handleScroll() {
   //   if (

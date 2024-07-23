@@ -7,12 +7,14 @@ import { Link, useNavigate } from "react-router-dom";
 import ToastMsg from "../Reuseables/ToastMsg";
 import { domain } from "../api/client";
 import { FaHandsHelping } from "react-icons/fa";
+import { BiLoaderAlt } from "react-icons/bi";
 
 function CreateUser() {
   const nav = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-//   const [getStarted, setGetStarted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  //   const [getStarted, setGetStarted] = useState(false);
   const [Toast, setToast] = useState(false);
   const [errType, setErrType] = useState({
     type: "",
@@ -24,7 +26,7 @@ function CreateUser() {
       email,
       password,
     };
-    
+
     const { error } = createUserSchema.validate(data);
     const userError = error?.details[0].message;
     if (error) {
@@ -37,12 +39,14 @@ function CreateUser() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       };
+      setIsLoading(true);
       const request = await fetch(`${domain}/api/access/create_user`, option);
       const result = await request.text();
       if (request.ok) {
+        setIsLoading(false);
         setToast(true);
         setErrType({ type: "success", msg: "Account Created" });
-        localStorage.setItem('AccessToken', result)
+        localStorage.setItem("AccessToken", result);
         nav("/getStarted");
       } else {
         setToast(true);
@@ -107,7 +111,15 @@ function CreateUser() {
               </div>
             </div>
             <CustomButton
-              btn_text="SignUp"
+              btn_text={
+                isLoading ? (
+                  <div className="animate-spin w-full flex justify-center  text-2xl">
+                    <BiLoaderAlt className="text-white" />
+                  </div>
+                ) : (
+                  "SignUp"
+                )
+              }
               additionalclass="p-3"
               handleClick={handleSubmit}
             />

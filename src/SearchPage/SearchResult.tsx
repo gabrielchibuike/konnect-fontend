@@ -7,7 +7,6 @@ import { MdAddLocation } from "react-icons/md";
 import { CiLocationArrow1 } from "react-icons/ci";
 import Button from "../Reuseables/Button";
 import { BsFillBookmarkFill } from "react-icons/bs";
-import Footer from "../Components/Footer";
 import { useSelector } from "react-redux";
 import SearchResultCard from "./SearchResultCard";
 import JobNotFound from "../Reuseables/JobNotFound";
@@ -15,6 +14,7 @@ import { saveJob } from "../utils/saveJobFunc";
 import FilterComponent from "./FilterComponent";
 import DOMPurify from "dompurify";
 import ToastMsg from "../Reuseables/ToastMsg";
+import Footer from "../Components/Footer";
 
 function SearchResult() {
   const scrollhieght = useRef<HTMLDivElement>(null);
@@ -41,12 +41,8 @@ function SearchResult() {
     });
   }, []);
 
-  async function LoadJobFeedId(jobs_info: jobs_info) {
-    setSearchPayLoadInfo([jobs_info]);
-  }
-
   function handleClick(jobs_info: jobs_info, i: number) {
-    console.log(jobs_info);
+    // console.log(jobs_info);
     if (activeCard) {
       activeCard.current.forEach((e) => {
         e.classList.add("hover:shadow-blue-700", "shadow");
@@ -59,7 +55,7 @@ function SearchResult() {
       );
       activeCard.current[i]!.classList.add("border", "border-blue-700");
     }
-    LoadJobFeedId(jobs_info);
+    setSearchPayLoadInfo([jobs_info]);
   }
 
   // LOAD THE FIRST INDEX DATA
@@ -78,6 +74,8 @@ function SearchResult() {
       }
     });
   }, [searchpayload]);
+
+
   return (
     <>
       <section>
@@ -100,7 +98,7 @@ function SearchResult() {
           <div className="px-40 max-lg:px-3">
             <FilterComponent />
           </div>
-          {searchpayload.length == 0 ? (
+          {searchpayload.length === 0 ? (
             <JobNotFound />
           ) : (
             <div className="w-full h-auto flex px-40  max-lg:px-4">

@@ -62,7 +62,6 @@ function Profile({
   const token = localStorage.getItem("AccessToken");
   const decoded: newJwtPayLoad = jwtDecode(token!);
 
-  // console.log(decoded.desired_jobs);
 
   function closePop() {
     setIsProfileClicked(false);
@@ -102,19 +101,19 @@ function Profile({
       setManageJob(false);
       setHelpCenter(false);
       setIsApplied(true);
-    } else if (index == 3) {
+    } else if (index == 2) {
       setSavedJobIsOpen(false);
       setIsApplied(false);
       setManageJob(false);
       setHelpCenter(false);
       setSettingJobIsOpen(true);
-    } else if (index == 4) {
+    } else if (index == 3) {
       setSavedJobIsOpen(false);
       setIsApplied(false);
       setManageJob(false);
       setSettingJobIsOpen(false);
       setHelpCenter(true);
-    } else if (index == 5) {
+    } else if (index == 4) {
       localStorage.removeItem("AccessToken");
       setTimeout(() => {
         direct("/login");
@@ -159,9 +158,8 @@ function Profile({
               </div>
               <div className="flex gap-3 items-center max-lg:mt-2 ">
                 <div className="w-[80px] h-[80px] max-lg:w-[60px] max-lg:h-[60px]  rounded-full bg-green-800 flex justify-center items-center">
-                  <p className="font-bold flex items-center text-white text-[40px] max-lg:text-[30px] capitalize">
+                  <p className="font-bold flex items-center text-white text-[50px] max-lg:text-[40px] capitalize">
                     {`${decoded.firstName.split("")[0]}`}
-                    {` ${decoded.lastName.split("")[0]}`}
                   </p>
                 </div>
                 <div>
@@ -185,7 +183,7 @@ function Profile({
                   >
                     <div className="flex items-center gap-3">
                       <span className="text-lg">{list.icon}</span>
-                      <div className="max-lg:text-base">{list.Title}</div>
+                      <div className="max-lg:text-sm font-medium">{list.Title}</div>
                     </div>
                     <div>
                       <MdArrowForwardIos />

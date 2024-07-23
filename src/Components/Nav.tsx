@@ -86,7 +86,7 @@ function Nav({ activeRoute }: { activeRoute?: string }) {
           ) : (
             <div>
               <div className="flex gap-3 text-2xl">
-                <IoIosNotificationsOutline />
+                {/* <IoIosNotificationsOutline /> */}
                 <div onClick={handlePop}>
                   <CgProfile />
                 </div>

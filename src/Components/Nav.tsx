@@ -3,7 +3,7 @@ import { CgProfile } from "react-icons/cg";
 import { BiMenu } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../Reuseables/Button";
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { ContextApi } from "../App";
 import { FaHandsHelping } from "react-icons/fa";
 import Profile from "../User_pages/Profile";
@@ -44,6 +44,12 @@ function Nav({ activeRoute }: { activeRoute?: string }) {
   function handlePop() {
     setIsProfileClicked(true);
   }
+
+  useEffect(()=>{
+    if(!token){
+      window.location.href = "/getStarted";
+    }
+  },[])
 
   return (
     <>

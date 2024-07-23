@@ -71,15 +71,17 @@ function CategoryPage() {
     );
 
     if (request.ok) {
-      direct(`/category-result`);
-
+     
+      
       setTimeout(async () => {
         const result = await request.json();
 
         dispatch(isLoading({ isLoading: false }));
 
         dispatch(categoryPayload({ categoryPayload: [...result] }));
+
       }, 2000);
+      direct(`/category-result`);
     } else if (request.status == 400) {
       dispatch(isLoading({ isLoading: false }));
       const result = await request.text();

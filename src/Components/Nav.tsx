@@ -45,11 +45,7 @@ function Nav({ activeRoute }: { activeRoute?: string }) {
     setIsProfileClicked(true);
   }
 
-  useEffect(()=>{
-    if(!token){
-      window.location.href = "/getStarted";
-    }
-  },[])
+ 
 
   return (
     <>

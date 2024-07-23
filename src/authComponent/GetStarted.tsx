@@ -121,9 +121,6 @@ function GetStarted() {
     }
   }
 
-  // useEffect(() => {
-  //   console.log(Records);
-  // }, [Records]);
   return (
     <>
       {Toast && (
@@ -136,7 +133,6 @@ function GetStarted() {
           />
         </div>
       )}
-      <Nav />
       <div className="w-full flex flex-col items-center max-lg:px-3 ">
         {step == 0 ? (
           <AuthStep1 handleClick={() => handleStep(0)} />

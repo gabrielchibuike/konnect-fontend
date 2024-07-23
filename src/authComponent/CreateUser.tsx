@@ -46,7 +46,7 @@ function CreateUser() {
         setIsLoading(false);
         setToast(true);
         setErrType({ type: "success", msg: "Account Created" });
-        // localStorage.setItem("AccessToken", result);
+        localStorage.setItem("AccessToken", result);
         nav("/getStarted");
       } else {
         setToast(true);

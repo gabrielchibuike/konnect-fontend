@@ -3,7 +3,7 @@ import AuthStep1 from "./authReuseable/AuthStep1";
 import AuthStep2 from "./authReuseable/AuthStep2";
 import AuthStep3 from "./authReuseable/AuthStep3";
 import AuthStep4 from "./authReuseable/AuthStep4";
-import Nav from "../Components/Nav";
+// import Nav from "../Components/Nav";
 import Footer from "../Components/Footer";
 import { useNavigate } from "react-router-dom";
 import { InputsTypes } from "../utils/interface";

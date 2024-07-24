@@ -15,7 +15,7 @@ const routesArray = [
     routes_text: "Companies",
   },
   {
-    routes: "/employer-hire",
+    routes: "/employer",
     routes_text: "Post Job/Employers",
   },
   {

@@ -16,6 +16,7 @@ import DOMPurify from "dompurify";
 function ApplyPage() {
   const [selectedFile, setSelectedFile] = useState<any>("");
   const [isLoading, setIsLoading] = useState(false);
+  const disabledBtn = useRef<HTMLButtonElement>(null);
   const styleInput = useRef<HTMLInputElement>(null);
   const [isOverView, setIsOverView] = useState(false);
   const [isViewApplication, setIsViewApplication] = useState(false);
@@ -91,11 +92,14 @@ function ApplyPage() {
       body: formData,
     };
     setIsLoading(true);
+    disabledBtn.current!.disabled = true;
+
     const request = await fetch(`${domain}/api/apply`, option);
     console.log(request);
 
     if (request.ok) {
       setIsLoading(false);
+      disabledBtn.current!.disabled = false;
       const result = await request.text();
       if (request.status == 409) {
         setToast(true);
@@ -107,8 +111,11 @@ function ApplyPage() {
         direct("/jobs");
       }, 5000);
     } else if (request.status == 403) {
+      disabledBtn.current!.disabled = false;
+      setIsLoading(false);
       direct("/login");
     } else {
+      disabledBtn.current!.disabled = false;
       setIsLoading(false);
       const result = await request.text();
       setToast(true);
@@ -341,6 +348,7 @@ function ApplyPage() {
                           }
                           additionalclass="w-full  max-lg:text-center text-lg  max-lg:py-3 py-3 rounded-lg"
                           handleClick={() => handleClick(Records)}
+                          disabled={disabledBtn}
                         />
                       </div>
                     </div>

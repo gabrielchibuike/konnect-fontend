@@ -72,6 +72,7 @@ function PostJob() {
     JobTitle: '',
     Company: '',
     WorkPlaceType: '',
+    Category: '',
     JobLocation: '',
     JobType: '',
     Description: '',
@@ -128,6 +129,7 @@ function PostJob() {
             JobTitle: Inputs.JobTitle,
             Company: Inputs.Company,
             WorkPlaceType: Inputs.WorkPlaceType,
+            Category: Inputs.Category,
             JobLocation: Inputs.JobLocation,
           };
         });
@@ -220,16 +222,13 @@ function PostJob() {
       },
       body: JSON.stringify(data),
     };
-    setIsLoading(true);
     const request = await fetch(`${domain}/api/create_job`, option);
     console.log(request);
 
     if (request.ok) {
-      setIsLoading(false);
       const result = await request.text();
       console.log(result);
     } else {
-      setIsLoading(false);
       const result = await request.text();
       if (result == 'Forbidden') {
         direct('/login');

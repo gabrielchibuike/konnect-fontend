@@ -14,6 +14,7 @@ export interface InputsTypes {
 }
 
 export interface InputsTypes2 {
+  [x: string]: string | number | readonly string[] | undefined;
   onsite?: string | number | readonly string[] | undefined;
   Remote?: string | number | readonly string[] | undefined;
   Hybrid?: string | number | readonly string[] | undefined;

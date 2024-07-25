@@ -1,7 +1,7 @@
 import { ChangeEvent } from "react";
 import Button from "../Reuseables/Button";
 import CustomInput from "../authComponent/authReuseable/CustomInput";
-import {  InputsTypes2 } from "../utils/interface";
+import { InputsTypes2 } from "../utils/interface";
 
 function SecondFormPage({
   handleClick,
@@ -11,7 +11,7 @@ function SecondFormPage({
   setInputs,
 }: {
   handleClick: () => void;
-  handleStepBackward: ()=> void;
+  handleStepBackward: () => void;
   handleInput: any;
   Inputs: InputsTypes2;
   setInputs: any;
@@ -21,7 +21,6 @@ function SecondFormPage({
     setInputs({ ...Inputs, [name]: value });
   }
 
- 
   return (
     <>
       <div className="w-full h-screen flex justify-center items-center py-14 max-lg:h-auto max-lg:px-3 ">
@@ -54,6 +53,25 @@ function SecondFormPage({
                 <option value={Inputs.onsite}> onsite</option>
                 <option value={Inputs.Remote}> Remote</option>
                 <option value={Inputs.Hybrid}> Hybrid</option>
+              </select>
+            </div>
+
+            <div className="w-full">
+              <label className="text-xs font-medium">Category</label>
+              <select
+                onChange={handleChange}
+                name="Category"
+                className="w-full py-3 px-2 outline-0 rounded-lg text-sm bg-[#80808011] focus:border focus:border-blue-700"
+              >
+                <option value={""}> select</option>
+                <option value={Inputs.Development}> Development & IT</option>
+                <option value={Inputs.Design}> Design & creative</option>
+                <option value={Inputs.Marketing}> Marketing</option>
+                <option value={Inputs.Accounting}>
+                  Accounting & Financing
+                </option>
+                <option value={Inputs.Enginnering}> Enginnering</option>
+                <option value={Inputs.Educator}> Educator</option>
               </select>
             </div>
 

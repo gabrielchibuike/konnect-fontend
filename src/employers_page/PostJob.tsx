@@ -45,7 +45,6 @@ function PostJob() {
   const direct = useNavigate();
   // const decoded = useDecodedToken();
 
-  const [isLoading, setIsLoading] = useState(false);
 
   const [step, setSteps] = useState<number>(0);
 

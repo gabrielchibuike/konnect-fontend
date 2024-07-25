@@ -297,7 +297,7 @@ function PostJob() {
       ) : step == 5 ? (
         <SixthFormPage
           handleClick={() => handleStep(5)}
-          isLoading={isLoading}
+        
         />
       ) : (
         ''

@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../Reuseables/Button";
 
 function GetStarted() {
+  const direct = useNavigate();
   return (
     <>
       <div className="w-full min-h-screen max-xl:min-h-[400px] flex flex-col justify-center">
@@ -16,7 +18,13 @@ function GetStarted() {
               your dream job.
             </p>
             <div className="max-lg:flex max-lg:justify-center">
-              <Button btn_text="Get Started" additionalclass=" " />
+              <Button
+                btn_text="Get Started"
+                additionalclass=" "
+                handleClick={() => {
+                  direct("/login");
+                }}
+              />
             </div>
           </div>
           <div className="w-[50%] bg-slate-500 flex justify-center max-lg:w-full rounded-2xl">

@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../Reuseables/Button";
 
 function CardSection2() {
+  const direct = useNavigate();
   return (
     <>
       <div className="w-full min-h-screen max-lg:h-[300px] max-xl:min-h-[400px]  flex  items-center">
@@ -26,7 +28,12 @@ function CardSection2() {
               </li>
             </ul>
             <div>
-              <Button btn_text={"Get Started"} />
+              <Button
+                btn_text={"Get Started"}
+                handleClick={() => {
+                  direct("/login");
+                }}
+              />
             </div>
           </div>
         </div>

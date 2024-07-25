@@ -1,33 +1,55 @@
-import { ChangeEvent, useEffect, useRef, useState } from "react";
-import Nav from "../Components/Nav";
-import Footer from "../Components/Footer";
-import { useNavigate } from "react-router-dom";
-import { InputsTypes } from "../utils/interface";
-import { domain } from "../api/client";
-import { JwtPayload, jwtDecode } from "jwt-decode";
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
+import Nav from '../Components/Nav';
+import Footer from '../Components/Footer';
+import { useNavigate } from 'react-router-dom';
+import { InputsTypes } from '../utils/interface';
+import { domain } from '../api/client';
+import { JwtPayload, jwtDecode } from 'jwt-decode';
 import {
   JobDetails,
   JobDetails2,
   JobDetails3,
   JobDetails4,
-} from "../validation/validateUser";
-import ToastMsg from "../Reuseables/ToastMsg";
-import FirstFormPage from "./FirstFormPage";
-import SecondFormPage from "./SecondFormPage";
-import ThirdFormPage from "./ThirdFormPage";
-import ForthFormPage from "./ForthFormPage";
-import FifthFormPage from "./FifthFormPage";
-import SixthFormPage from "./SixthFormPage";
-import SideNav from "../Components/SideNav";
+} from '../validation/validateUser';
+import ToastMsg from '../Reuseables/ToastMsg';
+import FirstFormPage from './FirstFormPage';
+import SecondFormPage from './SecondFormPage';
+import ThirdFormPage from './ThirdFormPage';
+import ForthFormPage from './ForthFormPage';
+import FifthFormPage from './FifthFormPage';
+import SixthFormPage from './SixthFormPage';
+import SideNav from '../Components/SideNav';
+
+function useDecodedToken() {
+  try {
+    const token = localStorage.getItem('AccessToken');
+    console.log(token);
+
+    const decoded: newJwtPayLoad = jwtDecode(token!);
+    return decoded;
+  } catch (error) {
+    console.log(error);
+    return {};
+  }
+}
+
+interface newJwtPayLoad extends JwtPayload {
+  id: string;
+  email: string;
+}
+
+// const token = localStorage.getItem('AccessToken');
+// const decoded: newJwtPayLoad = jwtDecode(token!);
 
 function PostJob() {
   const direct = useNavigate();
+  const decoded = useDecodedToken();
 
   const [isLoading, setIsLoading] = useState(false);
 
   const [step, setSteps] = useState<number>(0);
 
-  const [JobType, setJobType] = useState<string>("");
+  const [JobType, setJobType] = useState<string>('');
 
   const [Skills, setSkills] = useState<string[]>([]);
 
@@ -40,26 +62,26 @@ function PostJob() {
   const selectItemRef = useRef<HTMLDivElement[]>([]);
 
   const [errType, setErrType] = useState({
-    type: "",
-    msg: "",
+    type: '',
+    msg: '',
   });
 
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   const [Inputs, setInputs] = useState({
-    JobTitle: "",
-    Company: "",
-    WorkPlaceType: "",
-    JobLocation: "",
-    JobType: "",
-    Description: "",
-    Skills: "",
-    Currency: "",
-    Minimum: "",
-    Maximum: "",
-    Duration: "",
-    Benefits: "",
-    RecieveApplicant: "",
+    JobTitle: '',
+    Company: '',
+    WorkPlaceType: '',
+    JobLocation: '',
+    JobType: '',
+    Description: '',
+    Skills: '',
+    Currency: '',
+    Minimum: '',
+    Maximum: '',
+    Duration: '',
+    Benefits: '',
+    RecieveApplicant: '',
   });
 
   function handleInputs(e: ChangeEvent<HTMLInputElement>) {
@@ -67,13 +89,6 @@ function PostJob() {
     const { name, value } = e.target;
     setInputs({ ...Inputs, [name]: value });
   }
-
-  interface newJwtPayLoad extends JwtPayload {
-    id: string;
-    email: string;
-  }
-  const token = localStorage.getItem("AccessToken");
-  const decoded: newJwtPayLoad = jwtDecode(token!);
 
   const validate1 = {
     JobTitle: Inputs.JobTitle,
@@ -103,13 +118,13 @@ function PostJob() {
       const userError = error?.details[0].message;
       if (error) {
         setToast(true);
-        setErrType({ type: "error", msg: userError as string });
+        setErrType({ type: 'error', msg: userError as string });
       } else {
         setRecords((previnfo) => {
           return {
             ...previnfo,
-            id: decoded.id,
-            email: decoded.email,
+            id: decoded?.id,
+            email: decoded?.email,
             JobTitle: Inputs.JobTitle,
             Company: Inputs.Company,
             WorkPlaceType: Inputs.WorkPlaceType,
@@ -123,7 +138,7 @@ function PostJob() {
       const userError = error?.details[0].message;
       if (error) {
         setToast(true);
-        setErrType({ type: "error", msg: userError as string });
+        setErrType({ type: 'error', msg: userError as string });
       } else {
         setRecords((previnfo) => {
           return {
@@ -138,7 +153,7 @@ function PostJob() {
       const userError = error?.details[0].message;
       if (error) {
         setToast(true);
-        setErrType({ type: "error", msg: userError as string });
+        setErrType({ type: 'error', msg: userError as string });
       } else {
         setRecords((previnfo) => {
           return {
@@ -154,7 +169,7 @@ function PostJob() {
       const userError = error?.details[0].message;
       if (error) {
         setToast(true);
-        setErrType({ type: "error", msg: userError as string });
+        setErrType({ type: 'error', msg: userError as string });
       } else {
         setRecords((previnfo) => {
           return {
@@ -170,7 +185,7 @@ function PostJob() {
         setSteps(5);
       }
     } else if (index == 5) {
-      direct("/jobs");
+      direct('/jobs');
     }
   }
 
@@ -198,10 +213,10 @@ function PostJob() {
     };
 
     const option = {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
-        "x-auth-token": localStorage.getItem("AccessToken") as string,
+        'Content-Type': 'application/json',
+        'x-auth-token': localStorage.getItem('AccessToken') as string,
       },
       body: JSON.stringify(data),
     };
@@ -216,8 +231,8 @@ function PostJob() {
     } else {
       setIsLoading(false);
       const result = await request.text();
-      if (result == "Forbidden") {
-        direct("/login");
+      if (result == 'Forbidden') {
+        direct('/login');
       }
     }
   }
@@ -225,12 +240,13 @@ function PostJob() {
   useEffect(() => {
     console.log(Records);
   }, [Records]);
+
   return (
     <>
-      <Nav activeRoute="/jobs" />
+      <Nav activeRoute='/jobs' />
       <SideNav />
       {Toast && (
-        <div className="w-full fixed z-20 top-5 max-w-[250px]  left-1/2 -translate-x-1/2">
+        <div className='w-full fixed z-20 top-5 max-w-[250px]  left-1/2 -translate-x-1/2'>
           <ToastMsg
             setToast={setToast}
             Toast={Toast}
@@ -285,7 +301,7 @@ function PostJob() {
           isLoading={isLoading}
         />
       ) : (
-        ""
+        ''
       )}
       <Footer />
     </>

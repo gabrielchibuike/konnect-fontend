@@ -20,30 +20,30 @@ import FifthFormPage from './FifthFormPage';
 import SixthFormPage from './SixthFormPage';
 import SideNav from '../Components/SideNav';
 
-function useDecodedToken() {
-  try {
-    const token = localStorage.getItem('AccessToken');
-    console.log(token);
+// function useDecodedToken() {
+//   try {
+//     const token = localStorage.getItem('AccessToken');
+//     console.log(token);
 
-    const decoded: newJwtPayLoad = jwtDecode(token!);
-    return decoded;
-  } catch (error) {
-    console.log(error);
-    return {};
-  }
-}
+//     const decoded: newJwtPayLoad = jwtDecode(token!);
+//     return decoded;
+//   } catch (error) {
+//     console.log(error);
+//     return {};
+//   }
+// }
 
 interface newJwtPayLoad extends JwtPayload {
-  id: string;
+  _id: string;
   email: string;
 }
 
-// const token = localStorage.getItem('AccessToken');
-// const decoded: newJwtPayLoad = jwtDecode(token!);
+const token = localStorage.getItem('AccessToken');
+const decoded: newJwtPayLoad = jwtDecode(token!);
 
 function PostJob() {
   const direct = useNavigate();
-  const decoded = useDecodedToken();
+  // const decoded = useDecodedToken();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -123,7 +123,7 @@ function PostJob() {
         setRecords((previnfo) => {
           return {
             ...previnfo,
-            id: decoded?.id,
+            id: decoded?._id,
             email: decoded?.email,
             JobTitle: Inputs.JobTitle,
             Company: Inputs.Company,

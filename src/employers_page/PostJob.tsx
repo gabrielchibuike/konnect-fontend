@@ -20,31 +20,8 @@ import FifthFormPage from './FifthFormPage';
 import SixthFormPage from './SixthFormPage';
 import SideNav from '../Components/SideNav';
 
-// function useDecodedToken() {
-//   try {
-//     const token = localStorage.getItem('AccessToken');
-//     console.log(token);
-
-//     const decoded: newJwtPayLoad = jwtDecode(token!);
-//     return decoded;
-//   } catch (error) {
-//     console.log(error);
-//     return {};
-//   }
-// }
-
-interface newJwtPayLoad extends JwtPayload {
-  _id: string;
-  email: string;
-}
-
-const token = localStorage.getItem('AccessToken');
-const decoded: newJwtPayLoad = jwtDecode(token!);
-
 function PostJob() {
   const direct = useNavigate();
-  // const decoded = useDecodedToken();
-
 
   const [step, setSteps] = useState<number>(0);
 
@@ -59,6 +36,14 @@ function PostJob() {
   const [Toast, setToast] = useState(false);
 
   const selectItemRef = useRef<HTMLDivElement[]>([]);
+
+  interface newJwtPayLoad extends JwtPayload {
+    _id: string;
+    email: string;
+  }
+
+  const token = localStorage.getItem("AccessToken");
+  const decoded: newJwtPayLoad = jwtDecode(token!);
 
   const [errType, setErrType] = useState({
     type: '',
